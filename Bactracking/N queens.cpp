@@ -41,7 +41,7 @@ public:
             return ;
         }
         for(int i=0;i<n;i++){                   //checking each row by fixing column in every column
-            if(checkpos(n,board,i,col)){        //checking point safe or not
+            if(checkpos(n,board,i,col)){        //checking point safe or not       then 1 is put and proceed
                 board[i][col]=1;                //making true 
                 checkboard(n,board,col+1);      //if res formed by this cnt increase after that
                 board[i][col]=0;                //making false
