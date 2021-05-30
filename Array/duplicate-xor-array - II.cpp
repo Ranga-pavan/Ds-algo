@@ -15,7 +15,7 @@ int main() {
     while(hasbitset(all,k)==0)
         k++;
     for(int i=0;i<6;i++){
-        ans[hasbitset(a[i],k)]^=a[i];
+        ans[hasbitset(a[i],k)]^=a[i];               bit set goto 1 index remaining 0 index
     }
     cout<<ans[0]<<" "<<ans[1]<<" "<<k;
 }
