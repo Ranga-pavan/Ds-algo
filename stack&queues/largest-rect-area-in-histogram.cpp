@@ -10,7 +10,7 @@ public:
                     st.push(i);                                       //h[st.top()](2) not <= 1
                     i++;                                              // in 1 5 6 2
                 }
-                else{                                                 //(2 came)else pop(6,5) val upto which  rectangle forms
+                else{                                                 //(2 came)else pop(6,5) val upto which  rectangle forms  6*(3-1(5)-1) first next 5*(3-0(1)-1) 
                     tp=st.top();
                     st.pop();
                     area = h[tp]*(st.empty()? i:i-st.top()-1);
