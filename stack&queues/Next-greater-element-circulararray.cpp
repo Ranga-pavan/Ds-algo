@@ -31,3 +31,22 @@ public:
         return res;
     }
 };
+////////////////////////////////optimized
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        vector<int> res(nums.size(),-1);
+        stack<int> st;
+        int n=nums.size();
+        for(int i=0;i<2*nums.size();i++){                                   /for 'iouae' is come frm rotated 'aeiou' consider 'iouae-iouae' two times and find it 
+            while(!st.empty() && nums[i%n]>nums[st.top()]){
+                res[st.top()]=nums[i%n];
+                st.pop();
+                //st.push(i);
+            }
+            if(i<n) st.push(i%n);
+        }
+        
+        return res;
+    }
+};
