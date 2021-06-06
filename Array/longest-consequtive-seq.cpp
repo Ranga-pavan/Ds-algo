@@ -10,7 +10,7 @@ public:
     void unions(int u,int v,int parent[],vector<int>& nums){
         int x=findpar(u,parent);
         int y=findpar(v,parent);
-        parent[x]=parent[y];
+        parent[x]=parent[y];                            // //for [100,4,200,1,3,2] all points to index-1(4) in path compression hence x to y small to big
         
     }
     int longestConsecutive(vector<int>& nums) {
