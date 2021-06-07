@@ -7,11 +7,11 @@ public:
         int maxarea=0,tp,area;
             while(i<n){
                 if(st.empty() || h[st.top()]<=h[i]){                  //if coming val(6) is more than top add to stack hence rectangle formed
-                    st.push(i);                                       //h[st.top()](2) not <= 1
+                    st.push(i);                                       //h[st.top()](2) not <= 6
                     i++;                                              // in 1 5 6 2
                 }
                 else{                                                 //(2 came)else pop(6,5) val upto which  rectangle forms  6*(3-1(5)-1) first next 5*(3-0(1)-1) 
-                    tp=st.top();
+                    tp=st.top();                                      //6 more so ht is 6 and width is from index 3 to 1 only 2 
                     st.pop();
                     area = h[tp]*(st.empty()? i:i-st.top()-1);
                     if(maxarea<area)
