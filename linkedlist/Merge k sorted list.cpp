@@ -1,6 +1,6 @@
 class Solution {
 public:
-    ListNode* merge(ListNode* l1,ListNode* l2){
+    ListNode* merge(ListNode* l1,ListNode* l2){             //merge two list
         if(l1==NULL && l2==NULL) return NULL;
         if(l1 && !l2) return l1;
         if(l2 && !l1) return l2;
