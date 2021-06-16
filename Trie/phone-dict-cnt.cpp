@@ -1,5 +1,5 @@
 struct trie{
-    int cnt=0;
+    int cnt=0;                      //taking cnt
     struct trie *children[26];
 };
 struct trie *getnode(void){
