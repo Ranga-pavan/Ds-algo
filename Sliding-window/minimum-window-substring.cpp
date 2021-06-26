@@ -35,3 +35,7 @@ public:
           return str.substr(start,end-start+1);
     }
 };
+
+
+Input: s = "ADOBECODEBANC", t = "ABC"
+Output: "BANC"
