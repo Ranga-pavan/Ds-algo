@@ -23,3 +23,29 @@ public:
     }
 };
 //bit masking
+
+1542. Find Longest Awesome Substring
+
+class Solution {
+public:
+    int longestAwesome(string s) {
+        int parity=0,ans=1,index,tempparity;
+        unordered_map<int,int> map;
+        map[0]=-1;
+        for(int i=0;i<s.size();i++){
+            index=s[i]-'0';
+            parity^=1<<index;
+            if(map.count(parity)) ans=max(ans,i-map[parity]);           //even-even=even palindrome can form
+            else map[parity]=i;
+            tempparity=parity;
+            for(int j=0;j<=9;j++){
+                tempparity=parity;
+                tempparity^=1<<j;
+                if(map.count(tempparity)) ans=max(ans,i-map[tempparity]);     //change 1 bit palindrome with
+                //else map[tempparity]=i;                                     //odd digits
+            }
+            
+        }
+        return ans;
+    }
+};
