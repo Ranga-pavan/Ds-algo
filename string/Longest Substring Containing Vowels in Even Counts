@@ -1,0 +1,25 @@
+//1371. Find the Longest Substring Containing Vowels in Even Counts
+class Solution {
+public:
+    int findTheLongestSubstring(string s) {
+        unordered_map<int,int> map; //<parity,index>
+        vector<char> vowels{'a','e','i','o','u'};
+        int index,ans=0,parity=0;
+        map[0]=-1;                        //
+        for(int i=0;i<s.size();i++){
+            auto it=find(vowels.begin(),vowels.end(),s[i]);
+            if(it!=vowels.end()){
+                index=it-vowels.begin();
+                parity^=1<<index;
+            }
+            if(map.count(parity)){
+                 ans=max(ans,i-map[parity]);
+            }
+            else{
+                map[parity]=i;
+            }
+        }
+        return ans;
+    }
+};
+//bit masking
