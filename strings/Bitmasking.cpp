@@ -49,3 +49,26 @@ public:
         return ans;
     }
 };
+
+
+
+1915. Number of Wonderful Substrings
+
+class Solution {
+public:
+    long long wonderfulSubstrings(string s) {
+        int parity=0;
+        long long ans=0;
+        unordered_map<int,vector<int> > map;
+        map[0]={1};             //initially with 1 size
+        for(int i=0;i<s.size();i++){
+            parity^=1<<(s[i]-'a');
+            if(map.count(parity)) ans+=map[parity].size();          //all indexes can form even cnt substrings
+            map[parity].push_back(i);
+            for(int j=0;j<=9;j++){
+                if(map.count(parity^(1<<j))) ans+=map[parity^(1<<j)].size();    //checking odd cnt
+            }
+        }
+        return ans;
+    }
+};
