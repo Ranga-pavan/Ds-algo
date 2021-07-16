@@ -20,8 +20,35 @@ Example 4:
 Input: s = "abcde", maxLetters = 2, minSize = 3, maxSize = 3
 Output: 0  
   
+  class Solution {
+public:
+    int maxFreq(string s, int maxletters, int minsize, int maxsize) {
+        int n=s.size(),uniquecnt=0;
+        vector<int> letter(26,0);
+        map<string,int> rescnt;
+        int ans=0,j;
+        for(int i=0;i<n;i++){
+            if(letter[s[i]-'a']==0) uniquecnt++;
+            letter[s[i]-'a']++;
+            while(uniquecnt>maxletters || i-j+1 > minsize){       //checkimg conditions for window
+                if(letter[s[j]-'a']==1) uniquecnt--;
+                letter[s[j]-'a']--;
+                j++;
+            }
+            if(i-j+1 == minsize){
+                ans=max(ans,++rescnt[s.substr(j,i-j+1)]);
+                //j++;
+            }
+        }
+        return ans;
+    }
+};
   
-class Solution {
+//Which esentially means that since the substring of size greater than minSize starisfies the constraint of distinct letters <= maxLetters there will be a substring of this selected substring of size minSize that'll satisfy the same constraint and the frequency of this substring will be atleast as much as the parent substring.
+//We also know that number of shorter substrings are more than the longer ones , thus we only need to check for substrings of minSize satisfying the condition.
+
+
+/*class Solution {
 public:
     int maxFreq(string s, int maxletters, int minsize, int maxsize) {
         int n=s.size(),uniquecnt=0;
@@ -42,7 +69,5 @@ public:
         }
         return ans;
     }
-};
+};*/
 
-//Which esentially means that since the substring of size greater than minSize starisfies the constraint of distinct letters <= maxLetters there will be a substring of this selected substring of size minSize that'll satisfy the same constraint and the frequency of this substring will be atleast as much as the parent substring.
-//We also know that number of shorter substrings are more than the longer ones , thus we only need to check for substrings of minSize satisfying the condition.
