@@ -36,3 +36,29 @@ public:
     }
 };
 https://leetcode.com/problems/wildcard-matching/discuss/752350/Recursion-Brute-force-to-top-down-DP-and-Bottom-up
+
+
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        return helper(s,p,0,0);
+    }
+    
+    bool helper(string s, string p, int i, int j)
+    {
+        if(j==p.length())
+            return i==s.length();
+        if(i==s.length())
+            return (p[j]=='*' && helper(s,p,i,j+1));
+        bool first_match=(i<s.length() && (p[j]==s[i] || p[j]=='?'));
+        
+        if(p[j]=='*')
+        {
+            return (helper(s,p,i+1,j) || helper(s,p,i,j+1));
+        }
+        else
+        {
+            return (first_match && helper(s,p,i+1,j+1));
+        }
+    }
+};
