@@ -7,7 +7,7 @@ int Solution::maxSpecialProduct(vector<int> &arr) {
     if(n==1 || n==2) return 0;
     stack<int> stack0;
     stack <int> stack1;
-    stack0.push(0);
+    stack0.push(0);                     //index
     
     for(int i=1;i<arr.size()-1;i++){
         while(!stack0.empty() && arr[stack0.top()]<=arr[i]){
