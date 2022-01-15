@@ -27,12 +27,12 @@ int Solution::lis(const vector<int> &A) {
 
 class Solution {
 public:
-    int lowerbound(vector<int> &arr,int num){
+    int lowerbound(vector<int> &arr,int target){
     int l=0,h=arr.size()-1,m;
     while(l<h){
         m=l+(h-l)/2;
-        if(num<=arr[m]) h=m;
-        else l=m+1;
+        if(arr[m]<target) l=m+1;
+        else h=m;
     }
     return l;
 }
@@ -50,7 +50,7 @@ public:
             int index=lowerbound(lis,A[i]);
             lis[index]=A[i];
         }
-   
+        //
     }
     return len;
     }
